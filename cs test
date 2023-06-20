@@ -1,0 +1,36 @@
+using System;
+using System.Diagnostics;
+using NAudio.CoreAudioApi;
+using NAudio.CoreAudioApi.Interfaces;
+
+namespace AudioDeviceInfo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
+            MMDeviceCollection devices = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
+
+            foreach (MMDevice device in devices)
+            {
+
+                AudioSessionManager sessionManager = device.AudioSessionManager;
+                                // Console.WriteLine("Device: {0}", device.FriendlyName);
+
+                int count = sessionManager.Sessions.Count;
+
+                for (int i = 0; i < count; i++)
+                {
+                    uint processId = sessionManager.Sessions[i].GetProcessID;
+                    string processName = sessionManager.Sessions[i].State.ToString();
+                    if (processId != 0) {
+                        AudioSessionControl audioSessionControl = sessionManager.Sessions[i];
+                        // audioSessionControl
+                        Console.WriteLine("Device: {3}; Session {0}: Process ID = {1}; name = {2}", i, processId, processName, device.FriendlyName);
+                    }
+                }
+            }
+        }
+    }
+}
