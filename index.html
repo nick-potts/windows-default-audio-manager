@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <link href="./styles.css" rel="stylesheet">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <button id="runButton">Run</button>
+    <button id="changeMulti">Multi</button>
+
+    <div class="container">
+      <h1>Audio Device Settings</h1>
+      <label>
+        <input type="checkbox" id="autoDeviceManagement">
+        Enable auto audio device management
+      </label>
+      <br>
+      <label for="defaultOutputDevice">Select Default Output Device:</label>
+      <select id="defaultOutputDevice">
+        <option value="device1">Device 1</option>
+        <option value="device2">Device 2</option>
+        <option value="device3">Device 3</option>
+      </select>
+      <br>
+      <label for="defaultCommunicationDevice">Select Default Communication Device:</label>
+      <select id="defaultCommunicationDevice">
+        <option value="device1">Device 1</option>
+        <option value="device2">Device 2</option>
+        <option value="device3">Device 3</option>
+      </select>
+      <br>
+      <label for="defaultChromeOutputDevice">Select Default Chrome Output Device:</label>
+      <select id="defaultChromeOutputDevice">
+        <option value="device1">Device 1</option>
+        <option value="device2">Device 2</option>
+        <option value="device3">Device 3</option>
+      </select>
+      <br>
+      <div class="status" id="audioStatus">Status: Enabled</div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script  src="./renderer.js"></script>
+  </body>
+</html>
